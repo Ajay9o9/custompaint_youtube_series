@@ -27,8 +27,12 @@ class _ParticleAnimationsState extends State<ParticleAnimations> {
   }
 
   update() {
-    Timer.periodic(Duration(milliseconds: 16), (timer) {
-      setState(() {});
+    Timer.periodic(const Duration(milliseconds: 16), (timer) {
+      if (mounted) {
+        setState(() {});
+      } else {
+        timer.cancel();
+      }
     });
   }
 
